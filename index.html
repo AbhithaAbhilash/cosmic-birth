@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#09070f">
+    <meta name="description" content="Cosmic Birth — explore the universe, one discovery at a time.">
+    <title>Cosmic Birth — Explore the universe</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9C%B3%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="module" src="js/app.js"></script>
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Cosmic Birth home">
+        <span class="brand-mark" aria-hidden="true">✳</span>
+        <span>Cosmic <span class="brand-birth">Birth</span></span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#today">Today</a>
+        <a href="#planets">Planets</a>
+        <a href="#birthday">Birthday</a>
+        <a href="#collection">Collection</a>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section class="today section-shell" id="today" aria-labelledby="today-title">
+        <div class="today-copy">
+          <p class="eyebrow">YOUR WINDOW TO THE UNIVERSE</p>
+          <h1 id="today-title">A new wonder,<br>every day.</h1>
+          <p class="intro">Pause for a moment. Somewhere out there, something extraordinary is happening.</p>
+          <p class="placeholder-note">Your daily discovery is waiting among the stars.</p>
+          <div class="button-row">
+            <button class="button button-muted" type="button" disabled>View on NASA</button>
+            <button class="button button-outline" type="button" disabled>♡ &nbsp; Save to collection</button>
+          </div>
+        </div>
+        <div class="today-art" aria-label="Placeholder frame for today’s astronomy picture" role="img">
+          <div class="image-placeholder"><span class="placeholder-orbit" aria-hidden="true">✧</span><span>Today’s image will appear here</span></div>
+          <p class="image-caption">NASA ASTRONOMY PICTURE OF THE DAY</p>
+        </div>
+        <div class="explanation-panel">
+          <p class="eyebrow">A NOTE FROM THE COSMOS</p>
+          <p>Every image holds a story of distant galaxies, neighboring worlds, and the mysteries still waiting to be found.</p>
+        </div>
+      </section>
+
+      <section class="section-shell planets-section" id="planets" aria-labelledby="planets-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">OUR LITTLE CORNER OF THE GALAXY</p><h2 id="planets-title">Meet the neighbors</h2></div>
+          <p class="section-intro">Eight worlds, each with a story<br class="desktop-break"> worth traveling light-years for.</p>
+        </div>
+        <div class="planet-grid" aria-label="The eight planets">
+          <article class="planet-card"><span class="planet-orb mercury" aria-hidden="true"></span><h3>Mercury</h3></article>
+          <article class="planet-card"><span class="planet-orb venus" aria-hidden="true"></span><h3>Venus</h3></article>
+          <article class="planet-card"><span class="planet-orb earth" aria-hidden="true"></span><h3>Earth</h3></article>
+          <article class="planet-card"><span class="planet-orb mars" aria-hidden="true"></span><h3>Mars</h3></article>
+          <article class="planet-card"><span class="planet-orb jupiter" aria-hidden="true"></span><h3>Jupiter</h3></article>
+          <article class="planet-card"><span class="planet-orb saturn" aria-hidden="true"></span><h3>Saturn</h3></article>
+          <article class="planet-card"><span class="planet-orb uranus" aria-hidden="true"></span><h3>Uranus</h3></article>
+          <article class="planet-card"><span class="planet-orb neptune" aria-hidden="true"></span><h3>Neptune</h3></article>
+        </div>
+        <div class="detail-panel" aria-label="Planet details will appear here"><span aria-hidden="true">✧</span><p>Choose a world to discover more about it.</p></div>
+      </section>
+
+      <section class="birthday-section" id="birthday" aria-labelledby="birthday-title">
+        <div class="birthday-inner section-shell">
+          <div class="birthday-art" aria-hidden="true"><div class="birthday-glow"></div><div class="birthday-planet"></div><div class="birthday-ring"></div><span class="birthday-star">✦</span></div>
+          <div class="birthday-copy">
+            <p class="eyebrow">THE COSMOS HAS A DATE WITH YOU</p>
+            <h2 id="birthday-title">The universe was<br>already there.</h2>
+            <p class="section-intro">One day, one moment in the stars. Discover the cosmos as it appeared on a date that matters to you.</p>
+            <form class="birthday-form" id="birthday-form">
+              <label for="birth-date">Your date</label>
+              <div class="date-row"><input id="birth-date" name="birth-date" type="date" min="1995-06-16" required><button class="button button-primary" type="submit">Find my cosmic day <span aria-hidden="true">↗</span></button></div>
+            </form>
+            <div class="birthday-results" id="birthday-results" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-shell collection-section" id="collection" aria-labelledby="collection-title">
+        <div class="section-heading"><div><p class="eyebrow">YOUR PERSONAL UNIVERSE</p><h2 id="collection-title">My collection</h2></div><span class="saved-label">SAVED DISCOVERIES</span></div>
+        <div class="collection-empty" aria-live="polite"><span aria-hidden="true">✧</span><p>Your collection is empty. Save a discovery to see it here.</p></div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true">✳</span><span>Cosmic <span class="brand-birth">Birth</span></span></a><p>Images and data courtesy of NASA APOD.</p></footer>
+  </body>
+</html>
