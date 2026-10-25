@@ -1,6 +1,8 @@
 # Cosmic Birth
 
-Cosmic Birth is a cinematic, space-themed discovery website built with plain HTML, CSS, and JavaScript. This repository is currently at **Milestone 1: Layout and styling**. Its page establishes the visual foundation and placeholders for the daily NASA image, planets, cosmic birthdays, and a personal collection; those features are intentionally not wired up yet.
+Cosmic Birth is a cinematic, space-themed discovery website built with plain HTML, CSS, and JavaScript. It features NASA’s Astronomy Picture of the Day, an interactive guide to the eight planets, a lookup for the APOD entry on a chosen birthday, and a collection of discoveries saved in the browser.
+
+The app uses NASA’s current APOD service without an API key. It includes a fallback to the most recent published entry when today’s image is not available yet. NASA updates its planetary moon counts as new moons are confirmed, so those figures may change over time.
 
 ## Run locally
 
@@ -16,10 +18,10 @@ Open [http://localhost:8000](http://localhost:8000) in a browser. Use a local se
 
 - `index.html` — single-page structure and placeholder content.
 - `css/styles.css` — responsive visual design and accessibility styles.
-- `js/app.js` — minimal page initialization, including the birthday input's latest allowed date.
-- `js/api.js` — reserved for NASA APOD integration.
-- `js/storage.js` — reserved for browser collection storage.
-- `data/planets.js` — reserved for planet content.
+- `js/app.js` — page initialization, planet details, birthday lookup, and collection interactions.
+- `js/api.js` — NASA APOD requests and response normalization.
+- `js/storage.js` — browser-local discovery collection.
+- `data/planets.js` — planet facts used by the interactive guide.
 - `fixtures/` — reserved for local sample data.
 
 See [AGENTS.md](AGENTS.md) for project constraints, coding conventions, and the milestone plan.

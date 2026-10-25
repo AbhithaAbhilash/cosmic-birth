@@ -31,19 +31,21 @@
           <p class="eyebrow">YOUR WINDOW TO THE UNIVERSE</p>
           <h1 id="today-title">A new wonder,<br>every day.</h1>
           <p class="intro">Pause for a moment. Somewhere out there, something extraordinary is happening.</p>
-          <p class="placeholder-note">Your daily discovery is waiting among the stars.</p>
+          <p class="apod-status" id="apod-status" role="status">Finding today’s discovery…</p>
+          <h2 class="apod-title" id="apod-title">Loading today’s image</h2>
           <div class="button-row">
-            <button class="button button-muted" type="button" disabled>View on NASA</button>
-            <button class="button button-outline" type="button" disabled>♡ &nbsp; Save to collection</button>
+            <a class="button button-muted" id="apod-link" href="https://science.nasa.gov/apod/" target="_blank" rel="noreferrer">View on NASA <span aria-hidden="true">↗</span></a>
+            <button class="button button-outline save-button" id="save-apod" type="button" disabled>♡ &nbsp; Save to collection</button>
           </div>
         </div>
-        <div class="today-art" aria-label="Placeholder frame for today’s astronomy picture" role="img">
-          <div class="image-placeholder"><span class="placeholder-orbit" aria-hidden="true">✧</span><span>Today’s image will appear here</span></div>
-          <p class="image-caption">NASA ASTRONOMY PICTURE OF THE DAY</p>
-        </div>
+        <figure class="today-art" id="today-art">
+          <div class="image-placeholder" id="image-placeholder"><span class="placeholder-orbit" aria-hidden="true">✧</span><span>Today’s image will appear here</span></div>
+          <img class="apod-image" id="apod-image" alt="" hidden>
+          <figcaption class="image-caption" id="image-caption">NASA ASTRONOMY PICTURE OF THE DAY</figcaption>
+        </figure>
         <div class="explanation-panel">
           <p class="eyebrow">A NOTE FROM THE COSMOS</p>
-          <p>Every image holds a story of distant galaxies, neighboring worlds, and the mysteries still waiting to be found.</p>
+          <p id="apod-explanation">Every image holds a story of distant galaxies, neighboring worlds, and the mysteries still waiting to be found.</p>
         </div>
       </section>
 
@@ -52,17 +54,9 @@
           <div><p class="eyebrow">OUR LITTLE CORNER OF THE GALAXY</p><h2 id="planets-title">Meet the neighbors</h2></div>
           <p class="section-intro">Eight worlds, each with a story<br class="desktop-break"> worth traveling light-years for.</p>
         </div>
-        <div class="planet-grid" aria-label="The eight planets">
-          <article class="planet-card"><span class="planet-orb mercury" aria-hidden="true"></span><h3>Mercury</h3></article>
-          <article class="planet-card"><span class="planet-orb venus" aria-hidden="true"></span><h3>Venus</h3></article>
-          <article class="planet-card"><span class="planet-orb earth" aria-hidden="true"></span><h3>Earth</h3></article>
-          <article class="planet-card"><span class="planet-orb mars" aria-hidden="true"></span><h3>Mars</h3></article>
-          <article class="planet-card"><span class="planet-orb jupiter" aria-hidden="true"></span><h3>Jupiter</h3></article>
-          <article class="planet-card"><span class="planet-orb saturn" aria-hidden="true"></span><h3>Saturn</h3></article>
-          <article class="planet-card"><span class="planet-orb uranus" aria-hidden="true"></span><h3>Uranus</h3></article>
-          <article class="planet-card"><span class="planet-orb neptune" aria-hidden="true"></span><h3>Neptune</h3></article>
-        </div>
-        <div class="detail-panel" aria-label="Planet details will appear here"><span aria-hidden="true">✧</span><p>Choose a world to discover more about it.</p></div>
+        <div class="planet-grid" id="planet-grid" aria-label="The eight planets"></div>
+        <div class="detail-panel" id="planet-detail" aria-live="polite"><span aria-hidden="true">✧</span><p>Choose a world to discover more about it.</p></div>
+        <p class="data-note">Moon counts reflect NASA’s currently recognized totals and can change as new moons are confirmed.</p>
       </section>
 
       <section class="birthday-section" id="birthday" aria-labelledby="birthday-title">
@@ -83,7 +77,8 @@
 
       <section class="section-shell collection-section" id="collection" aria-labelledby="collection-title">
         <div class="section-heading"><div><p class="eyebrow">YOUR PERSONAL UNIVERSE</p><h2 id="collection-title">My collection</h2></div><span class="saved-label">SAVED DISCOVERIES</span></div>
-        <div class="collection-empty" aria-live="polite"><span aria-hidden="true">✧</span><p>Your collection is empty. Save a discovery to see it here.</p></div>
+        <div class="collection-list" id="collection-list" aria-label="Saved discoveries"></div>
+        <p class="collection-message" id="collection-message" role="status">Your collection is empty. Save a discovery to see it here.</p>
       </section>
     </main>
 

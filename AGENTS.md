@@ -10,12 +10,12 @@
 
 ## File structure and responsibilities
 
-- `index.html` — semantic page structure, navigation, placeholders, form, and landmarks.
+- `index.html` — semantic page structure, navigation, forms, and landmarks.
 - `css/styles.css` — design tokens, responsive layout, visual styling, and motion preferences.
-- `js/app.js` — small page-level behaviors and initialization.
-- `js/api.js` — future NASA API helpers (Milestone 2 onward).
-- `js/storage.js` — future browser storage helpers (Milestone 5).
-- `data/planets.js` — future solar-system data (Milestone 3).
+- `js/app.js` — page initialization, APOD and birthday rendering, planet interactions, and collection UI.
+- `js/api.js` — NASA APOD requests and response normalization.
+- `js/storage.js` — guarded localStorage helpers for saved discoveries.
+- `data/planets.js` — solar-system facts shown in the planet guide.
 - `fixtures/` — reserved for local sample data used in later milestones.
 - `AGENTS.md` — project instructions and conventions.
 - `README.md` — project overview and local run instructions.
@@ -41,12 +41,12 @@ Then open `http://localhost:8000` in a browser.
 
 ## Six-milestone plan
 
-1. Layout and styling
-2. APOD of the day
-3. Planets
-4. Birthday lookup
-5. Collection
-6. Polish and accessibility
+1. Layout and styling — complete
+2. APOD of the day — complete
+3. Planets — complete
+4. Birthday lookup — complete
+5. Collection — complete
+6. Polish and accessibility — complete
 
 ## Non-goals for v1
 

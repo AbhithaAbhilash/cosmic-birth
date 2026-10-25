@@ -75,10 +75,16 @@ h1 { margin: var(--space-5) 0; max-width: 600px; font-size: clamp(3rem, 6vw, 5re
 .button-muted { background: #6c5b8c; color: #f8f4ff; }
 .button-outline { border-color: #9784ba; color: #e8defa; background: rgba(15,12,22,.72); }
 .button-primary { background: #7753b4; border-color: #ad8de8; color: #fff; cursor: pointer; }
-.today-art { grid-column: 2; grid-row: 1 / span 2; position: relative; aspect-ratio: 1.22; min-height: 260px; max-height: 430px; display: grid; place-items: center; overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius); background: radial-gradient(ellipse at 49% 50%, rgba(139, 103, 194, .50), transparent 34%), radial-gradient(ellipse at 53% 58%, rgba(61, 43, 92, .76), transparent 66%), linear-gradient(145deg, #161124, #0d0a14 75%); box-shadow: 0 18px 70px rgba(0,0,0,.28), inset 0 0 45px rgba(187, 154, 255,.06); }
+.today-art { grid-column: 2; grid-row: 1 / span 2; position: relative; width: 100%; margin: 0; aspect-ratio: 1.22; min-height: 260px; max-height: 430px; display: grid; place-items: center; overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius); background: radial-gradient(ellipse at 49% 50%, rgba(139, 103, 194, .50), transparent 34%), radial-gradient(ellipse at 53% 58%, rgba(61, 43, 92, .76), transparent 66%), linear-gradient(145deg, #161124, #0d0a14 75%); box-shadow: 0 18px 70px rgba(0,0,0,.28), inset 0 0 45px rgba(187, 154, 255,.06); }
 .image-placeholder { display: flex; flex-direction: column; align-items: center; gap: .7rem; padding: 1rem; color: #e0d7ed; font-size: .8rem; text-align: center; }
+.image-placeholder[hidden] { display: none; }
+.apod-image { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; }
+.apod-image[hidden] { display: none; }
 .placeholder-orbit { color: var(--accent); font-size: 3rem; text-shadow: 0 0 28px var(--accent-glow); }
 .image-caption { position: absolute; right: 1rem; bottom: .7rem; left: 1rem; margin: 0; color: #ddd3ea; font-size: .58rem; letter-spacing: .13em; text-align: center; }
+.apod-status { margin: 1.1rem 0 .3rem; color: #d0bfef; font-size: .74rem; letter-spacing: .05em; }
+.apod-date { color: var(--text-muted); }
+.apod-title { margin: .15rem 0 .7rem; font: 500 clamp(1.45rem, 2.4vw, 2rem)/1.2 var(--font-display); letter-spacing: -.02em; }
 .explanation-panel { grid-column: 1 / -1; margin-top: var(--space-6); padding: var(--space-5); border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
 .explanation-panel p:last-child { margin: 0; color: var(--text-muted); font-size: .9rem; }
 .planets-section { padding-top: var(--space-8); padding-bottom: var(--space-9); }
@@ -86,14 +92,23 @@ h1 { margin: var(--space-5) 0; max-width: 600px; font-size: clamp(3rem, 6vw, 5re
 .section-heading h2, .birthday-copy h2 { margin: 0; font-size: clamp(2rem, 4vw, 2.85rem); }
 .section-intro { margin: 0; max-width: 360px; color: var(--text-muted); font-size: .86rem; }
 .planet-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-3); }
-.planet-card { min-height: 148px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: .7rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); box-shadow: inset 0 1px rgba(255,255,255,.025); transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
-.planet-card:hover, .planet-card:focus-within { border-color: #a98bd6; box-shadow: 0 0 22px var(--accent-glow); transform: translateY(-2px); }
-.planet-card h3 { margin: 0; font: 500 1.05rem var(--font-display); }
+.planet-card { width: 100%; min-height: 148px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: .55rem; padding: .85rem .35rem; color: var(--text); font: inherit; text-align: center; cursor: pointer; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); box-shadow: inset 0 1px rgba(255,255,255,.025); transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+.planet-card:hover, .planet-card:focus-visible, .planet-card.active { border-color: #a98bd6; box-shadow: 0 0 22px var(--accent-glow); transform: translateY(-2px); }
+.planet-name { font: 500 1.05rem var(--font-display); }
+.planet-type { color: var(--text-muted); font-size: .68rem; }
 .planet-orb { position: relative; width: 42px; height: 42px; border-radius: 50%; box-shadow: inset -9px -7px 12px rgba(0,0,0,.45), 0 0 24px rgba(218,197,255,.12); }
 .mercury { background: linear-gradient(145deg,#c9bca9,#77747c 70%); }.venus { background: linear-gradient(145deg,#f1d4a3,#ae6945); }.earth { background: linear-gradient(145deg,#8ed4e7,#266aa0 70%); }.mars { background: linear-gradient(145deg,#efab83,#9d4136 72%); }.jupiter { background: repeating-linear-gradient(175deg,#c98d5c 0 6px,#e5c39a 7px 12px,#9c684a 13px 17px); }.saturn { background: repeating-linear-gradient(175deg,#e6d3a5 0 7px,#ac8a61 8px 12px); }.uranus { background: linear-gradient(145deg,#b7e8e6,#62a7ad); }.neptune { background: linear-gradient(145deg,#9caefa,#33478f 75%); }
 .saturn::after { content: ""; position: absolute; width: 65px; height: 17px; left: -12px; top: 13px; border: 3px solid #d7c08e; border-radius: 50%; transform: rotate(-24deg); }
-.detail-panel { min-height: 68px; display: flex; align-items: center; gap: var(--space-3); margin-top: var(--space-4); padding: var(--space-3) var(--space-4); border: 1px solid var(--border); border-radius: var(--radius); background: rgba(12,10,19,.56); color: var(--text-muted); }
-.detail-panel span { color: var(--accent); font-size: 1.25rem; }.detail-panel p { margin: 0; font-size: .83rem; }
+.detail-panel { min-height: 68px; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin-top: var(--space-4); padding: var(--space-4); border: 1px solid var(--border); border-radius: var(--radius); background: rgba(12,10,19,.56); color: var(--text-muted); }
+.detail-icon { color: var(--accent); font-size: 1.25rem; }
+.detail-panel>p { margin: 0; font-size: .83rem; }
+.planet-detail-title { margin: 0; color: var(--text); font: 500 1.35rem var(--font-display); }
+.planet-facts { width: 100%; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .35rem .75rem; margin: 0; }
+.planet-facts dt { color: var(--text-muted); font-size: .65rem; }
+.planet-facts dd { margin: 0; color: var(--text); font-size: .77rem; }
+.planet-fact { flex-basis: 100%; color: var(--text-muted); }
+.detail-panel .text-link { font-size: .75rem; }
+.data-note { margin: .75rem 0 0; color: var(--text-muted); font-size: .68rem; }
 .birthday-section { border-block: 1px solid rgba(255,255,255,.08); background: linear-gradient(110deg, rgba(31,23,48,.78), rgba(15,12,23,.77)); }
 .birthday-inner { min-height: 420px; display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(2rem, 8vw, 7rem); align-items: center; padding-top: var(--space-7); padding-bottom: var(--space-7); }
 .birthday-art { position: relative; min-height: 280px; display: grid; place-items: center; }
@@ -106,10 +121,32 @@ h1 { margin: var(--space-5) 0; max-width: 600px; font-size: clamp(3rem, 6vw, 5re
 .birthday-form label { display: block; margin-bottom: .4rem; color: var(--text); font-size: .78rem; font-weight: 600; }
 .date-row { display: flex; flex-wrap: wrap; gap: var(--space-3); }
 .date-row input { min-height: 44px; width: min(230px, 100%); padding: .55rem .7rem; border: 1px solid #85789c; border-radius: 5px; color: var(--text); background: #100d18; color-scheme: dark; }
+.birthday-results:not(:empty) { margin-top: var(--space-5); }
+.birthday-card { display: grid; grid-template-columns: minmax(170px, .8fr) 1.2fr; overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius); background: rgba(9,7,15,.65); }
+.birthday-card-image { min-height: 220px; display: grid; place-items: center; overflow: hidden; background: radial-gradient(ellipse, #594177, #110d1a); }
+.birthday-card-image img { width: 100%; height: 100%; min-height: 220px; object-fit: cover; }
+.birthday-card-content { padding: var(--space-5); }
+.birthday-card-content .eyebrow { font-size: .61rem; }
+.birthday-card-content h3 { margin: 0 0 .65rem; font: 500 1.25rem/1.25 var(--font-display); }
+.birthday-explanation { max-height: 190px; overflow: auto; color: var(--text-muted); font-size: .78rem; line-height: 1.75; }
+.birthday-card-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .65rem; margin-top: 1rem; }
+.video-note { padding: 1rem; color: var(--text-muted); font-size: .8rem; text-align: center; }
+.save-button { cursor: pointer; }
+.save-button:disabled { opacity: .65; }
+.save-button.saved { color: #e3d3ff; border-color: #ad8de8; background: rgba(119,83,180,.22); }
 .collection-section { padding-top: var(--space-8); padding-bottom: var(--space-9); }
 .saved-label { color: var(--text-muted); font-size: .63rem; letter-spacing: .14em; }
-.collection-empty { min-height: 150px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .3rem; padding: var(--space-5); border: 1px dashed #78688f; border-radius: var(--radius); background: rgba(16,13,24,.55); text-align: center; }
-.collection-empty span { color: var(--accent); font-size: 1.7rem; }.collection-empty p { margin: 0; color: var(--text-muted); font-size: .85rem; }
+.collection-message { min-height: 100px; display: grid; place-items: center; margin: 0; padding: var(--space-5); border: 1px dashed #78688f; border-radius: var(--radius); background: rgba(16,13,24,.55); color: var(--text-muted); font-size: .85rem; text-align: center; }
+.collection-list:not(:empty) { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: var(--space-4); }
+.collection-list:not(:empty) + .collection-message { min-height: 0; border: 0; padding: 0 0 1rem; background: transparent; text-align: left; }
+.collection-card { overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
+.collection-card-image { height: 150px; display: grid; place-items: center; overflow: hidden; background: radial-gradient(ellipse, #594177, #110d1a); }
+.collection-card-image img { width: 100%; height: 100%; object-fit: cover; }
+.collection-video { color: var(--text-muted); font-size: .8rem; }
+.collection-card-body { padding: var(--space-4); }
+.collection-card-body h3 { margin: 0 0 .25rem; font: 500 1.05rem/1.3 var(--font-display); }
+.collection-card-body time { color: var(--text-muted); font-size: .72rem; }
+.remove-button { display: block; margin-top: .75rem; padding: .35rem 0; border: 0; color: #dccaff; background: none; cursor: pointer; font-size: .72rem; text-decoration: underline; text-underline-offset: .15em; }
 .site-footer { min-height: 84px; width: min(1120px, 100%); margin: auto; padding: var(--space-4) var(--space-5); display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); border-top: 1px solid rgba(255,255,255,.09); }
 .site-footer p { margin: 0; color: var(--text-muted); font-size: .73rem; }.footer-brand { font-size: .94rem; }
 @keyframes star-twinkle { from { opacity: .19; } to { opacity: .37; } }
@@ -125,6 +162,9 @@ h1 { margin: var(--space-5) 0; max-width: 600px; font-size: clamp(3rem, 6vw, 5re
   .section-heading { align-items: flex-start; flex-direction: column; gap: .7rem; }
   .planet-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; }
   .planet-card { min-height: 128px; }
+  .planet-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .birthday-card { grid-template-columns: 1fr; }
+  .birthday-card-image, .birthday-card-image img { min-height: 190px; max-height: 240px; }
   .birthday-inner { grid-template-columns: 1fr; gap: .5rem; padding-block: var(--space-6); }
   .birthday-art { min-height: 210px; }
   .birthday-planet { width: 112px; }.birthday-ring { width: 220px; height: 82px; }
